@@ -73,6 +73,10 @@ const MenuItem = ({
         </button>
         // hvis item quanitty er mer enn null så vil CounterButton bli trykket eller hvis ikke finnes i handlekurv eller ikke har blitt trykket på så er det vanlig button som blir aktiv
       )}
+
+      <div className={styles.itemCategory}>{item.category}</div>
+      <div className={styles.itemName}>{item.name}</div>
+      <div className={styles.itemPrice}>{item.price.toFixed(2)}</div>
     </div>
   );
 };
