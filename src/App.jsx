@@ -7,6 +7,7 @@ import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
 
 function App() {
   const [cartContent, setCartContent] = useState([]);
+  const [addToCartButtonActive, setAddToCartButtonActive] = useState(null);
 
   return (
     <>
@@ -14,6 +15,8 @@ function App() {
         <MenuList
           cartContent={cartContent}
           setCartContent={setCartContent}
+          addToCartButtonActive={addToCartButtonActive}
+          setAddToCartButtonActive={setAddToCartButtonActive}
         ></MenuList>
       </section>
 
