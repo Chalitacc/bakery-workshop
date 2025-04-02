@@ -2,10 +2,19 @@ import React from "react";
 import styles from "./CounterButton.module.css";
 import MenuItem from "../MenuItem/MenuItem";
 
-const CounterButton = ({ itemQuantity, addItemToCart }) => {
+const CounterButton = ({
+  itemQuantity,
+  addItemToCart,
+  subtractItemFromCart,
+}) => {
   return (
     <div className={styles.addToCartButtonActive}>
-      <button className={styles.addToCartDecrement}>-</button>
+      <button
+        onClick={subtractItemFromCart}
+        className={styles.addToCartDecrement}
+      >
+        -
+      </button>
       <span>{itemQuantity}</span>
       <button onClick={addItemToCart} className={styles.addToCartIncrement}>
         +

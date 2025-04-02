@@ -32,12 +32,39 @@ const MenuItem = ({
     });
   };
 
+  const subtractItemFromCart = () => {
+    setCartContent((prev) => {
+      // Find existing item
+      const itemIndex = prev.findIndex(
+        (cartItem) => cartItem.menuItemNum === item.id
+      );
+
+      // If non existing return same refernce
+      if (itemIndex === -1) return prev;
+
+      // Clone the specific item
+      const updateItem = { ...prev[itemIndex], qty: prev[itemIndex].qty - 1 };
+
+      // Create new cart array
+      const updateCart = prev.map((item, i) =>
+        i === itemIndex ? updateItem : item
+      );
+
+      // Filter out items where quantity reaches 0
+      // _, is for finding the index as i is for the cart item
+      return updateItem.qty === 0
+        ? updateCart.filter((_) => i !== itemIndex)
+        : updateCart;
+    });
+  };
+
   return (
     <div className={styles.menuItem}>
       <img src={item.imageUrl} />
       {itemQuantity || addToCartButtonActive == item.id ? (
         <CounterButton
           addItemToCart={addItemToCart}
+          subtractItemFromCart={subtractItemFromCart}
           itemQuantity={itemQuantity}
         ></CounterButton>
       ) : (
